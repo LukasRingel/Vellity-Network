@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "a16e263f-327f-46eb-90c9-54c1cfa99050",
+		"name": "vellity-economy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28189391"
+	},
+	"item": [
+		{
+			"name": "currency",
+			"item": [
+				{
+					"name": "get-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{economy-host}}/currencies",
+							"host": [
+								"{{economy-host}}"
+							],
+							"path": [
+								"currencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{economy-host}}/currencies/id?id=1",
+							"host": [
+								"{{economy-host}}"
+							],
+							"path": [
+								"currencies",
+								"id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-context",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{economy-host}}/currencies/context?context=POSTMAN",
+							"host": [
+								"{{economy-host}}"
+							],
+							"path": [
+								"currencies",
+								"context"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "currency-create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"context\": \"POSTMAN\",\r\n    \"name\": \"test-2\",\r\n    \"defaultValue\": 5.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{economy-host}}/currencies",
+							"host": [
+								"{{economy-host}}"
+							],
+							"path": [
+								"currencies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "currency-booster",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currencyId\": 2,\r\n    \"amount\": 1.2,\r\n    \"startAt\": 1688500806933,\r\n    \"activeUntil\": 1691359200000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{economy-host}}/currencies/booster",
+							"host": [
+								"{{economy-host}}"
+							],
+							"path": [
+								"currencies",
+								"booster"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transaction",
+			"item": [
+				{
+					"name": "transaction-create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"playerId\": \"8bc61e5e-4791-4518-88ef-16448910296f\",\r\n    \"currencyId\": 2,\r\n    \"amount\": 5.0,\r\n    \"action\": \"ADD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{economy-host}}/transactions",
+							"host": [
+								"{{economy-host}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction-revoke",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{economy-host}}/transactions?transaction=6",
+							"host": [
+								"{{economy-host}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "transaction",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transaction-last",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{economy-host}}/transactions?player=8bc61e5e-4791-4518-88ef-16448910296f&currency=2&limit=25",
+							"host": [
+								"{{economy-host}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "currency",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "balance-by-currency",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{economy-host}}/balance/currency?player=8bc61e5e-4791-4518-88ef-16448910296f&currency=1",
+							"host": [
+								"{{economy-host}}"
+							],
+							"path": [
+								"balance",
+								"currency"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "currency",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "balance-by-context",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{economy-host}}/balance/context?player=8bc61e5e-4791-4518-88ef-16448910296f&context=POSTMAN",
+							"host": [
+								"{{economy-host}}"
+							],
+							"path": [
+								"balance",
+								"context"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{economy-api-key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "API-KEY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

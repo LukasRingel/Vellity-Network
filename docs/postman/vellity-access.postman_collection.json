@@ -1,0 +1,516 @@
+{
+	"info": {
+		"_postman_id": "284597f3-b5d8-4446-b9de-538d0bca342a",
+		"name": "vellity-access",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28189391"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "user-group-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"playerId\": \"8bc61e5e-4791-4518-88ef-16448910296f\",\r\n    \"group\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{access-host}}/user/group",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"user",
+								"group"
+							]
+						},
+						"description": "Add a permission to a user"
+					},
+					"response": []
+				},
+				{
+					"name": "user-group-remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"playerId\": \"8bc61e5e-4791-4518-88ef-16448910296f\",\r\n    \"assignedGroupId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{access-host}}/user/group",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"user",
+								"group"
+							]
+						},
+						"description": "Add a permission to a user"
+					},
+					"response": []
+				},
+				{
+					"name": "user-permission-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"playerId\": \"9c8fdb82-79de-45e7-be32-954c1ccee749\",\r\n    \"context\": \"MAPEDIT\",\r\n    \"permission\": \"network.maintenance.access\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{access-host}}/user/permissions",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"user",
+								"permissions"
+							]
+						},
+						"description": "Add a permission to a user"
+					},
+					"response": []
+				},
+				{
+					"name": "user-permission-remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"playerId\": \"8bc61e5e-4791-4518-88ef-16448910296f\",\r\n    \"assignedPermissionId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{access-host}}/user/permissions",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"user",
+								"permissions"
+							]
+						},
+						"description": "Add a permission to a user"
+					},
+					"response": []
+				},
+				{
+					"name": "user-find-context",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{access-host}}/user/find/context?playerId=8bc61e5e-4791-4518-88ef-16448910296f&context=POSTMAN",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"user",
+								"find",
+								"context"
+							],
+							"query": [
+								{
+									"key": "playerId",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-find-everywhere",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{access-host}}/user/find?playerId=8bc61e5e-4791-4518-88ef-16448910296f",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"user",
+								"find"
+							],
+							"query": [
+								{
+									"key": "playerId",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-haspermission",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{access-host}}/user/check?playerId=8bc61e5e-4791-4518-88ef-16448910296f&context=POSTMAN&permission=test.test",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"user",
+								"check"
+							],
+							"query": [
+								{
+									"key": "playerId",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "permission",
+									"value": "test.test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{access-host}}/user/group/history?playerId=8bc61e5e-4791-4518-88ef-16448910296f&context=POSTMAN",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"user",
+								"group",
+								"history"
+							],
+							"query": [
+								{
+									"key": "playerId",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "group",
+			"item": [
+				{
+					"name": "group-find-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{access-host}}/groups/all",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"groups",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-find-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{access-host}}/groups/find/id?groupId=2",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"groups",
+								"find",
+								"id"
+							],
+							"query": [
+								{
+									"key": "groupId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-find-by-context",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"groupId\": 9,\r\n    \"permission\": \"test.dev\"\r\n}"
+						},
+						"url": {
+							"raw": "{{access-host}}/groups/find/context?context=POSTMAN",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"groups",
+								"find",
+								"context"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"context\": \"POSTMAN\",\r\n    \"name\": \"rest-test-2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{access-host}}/groups",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"groupId\": 11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{access-host}}/groups",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-metadata-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"groupId\": 2,\r\n    \"metaData\": {\r\n        \"first\": \"testKey\",\r\n        \"second\": \"testValue2\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{access-host}}/groups/metadata",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"groups",
+								"metadata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-metadata-remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"groupId\": 2,\r\n    \"metaDataKey\": \"testKey\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{access-host}}/groups/metadata",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"groups",
+								"metadata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-permission-add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"groupId\": 15,\r\n    \"permission\": \"*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{access-host}}/groups/permission",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"groups",
+								"permission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "group-permission-remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"groupId\": 2,\r\n    \"permission\": \"*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{access-host}}/groups/permission",
+							"host": [
+								"{{access-host}}"
+							],
+							"path": [
+								"groups",
+								"permission"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{access-api-key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "API-KEY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

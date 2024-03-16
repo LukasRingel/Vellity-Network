@@ -1,0 +1,651 @@
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  DOCKER_TLS_CERTDIR: "/certs"
+
+before_script:
+  - export GRADLE_USER_HOME="$HOME/.gradle"
+
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
+stages:
+  - utilities
+  - common
+  - components
+  - components-web
+  - qodana
+
+# -- Qodana --
+qodana:
+  stage: qodana
+  only:
+    - main
+  image:
+    name: jetbrains/qodana-jvm
+    entrypoint: [ "" ]
+  variables:
+    QODANA_TOKEN: $qodana_token
+  script:
+    - qodana --save-report --results-dir=$CI_PROJECT_DIR/.qodana
+
+# -- Utilities --
+build and publish (utilities):
+  stage: utilities
+  artifacts:
+    expire_in: 7 days
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - cd utilities
+    - gradle publish
+
+# -- Common --
+build and publish (common):
+  stage: common
+  artifacts:
+    expire_in: 7 days
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - cd common
+    - gradle publish
+
+# -- Components --
+# access
+build access:
+  stage: components
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components/access-service/build/libs/*.jar
+  script:
+    - gradle :components:access-service:bootJar
+
+deploy access:
+  stage: components
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build access
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components/access-service/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/access:${CI_COMMIT_TAG}"
+
+rollout access (dev):
+  stage: components
+  needs:
+    - deploy access
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/network-access --namespace vellity-develop
+
+# babbel
+build babbel:
+  stage: components
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components/babbel-service/build/libs/*.jar
+  script:
+    - gradle :components:babbel-service:bootJar
+
+deploy babbel:
+  stage: components
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build babbel
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components/babbel-service/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/babbel:${CI_COMMIT_TAG}"
+
+rollout babbel (dev):
+  stage: components
+  needs:
+    - deploy babbel
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/network-babbel --namespace vellity-develop
+
+# configuration
+build config:
+  stage: components
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components/config-service/build/libs/*.jar
+  script:
+    - gradle :components:config-service:bootJar
+
+deploy config:
+  stage: components
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build config
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components/config-service/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/config:${CI_COMMIT_TAG}"
+
+rollout config (dev):
+  stage: components
+  needs:
+    - deploy config
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/network-config --namespace vellity-develop
+
+# economy
+build economy:
+  stage: components
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components/economy-service/build/libs/*.jar
+  script:
+    - gradle :components:economy-service:bootJar
+
+deploy economy:
+  stage: components
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build economy
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components/economy-service/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/economy:${CI_COMMIT_TAG}"
+
+rollout economy (dev):
+  stage: components
+  needs:
+    - deploy economy
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/network-economy --namespace vellity-develop
+
+# explorer
+build explorer:
+  stage: components
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components/explorer-service/build/libs/*.jar
+  script:
+    - gradle :components:explorer-service:bootJar
+
+deploy explorer:
+  stage: components
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build explorer
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components/explorer-service/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/explorer:${CI_COMMIT_TAG}"
+
+rollout explorer (dev):
+  stage: components
+  needs:
+    - deploy explorer
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/network-explorer --namespace vellity-develop
+
+# friends
+build friends:
+  stage: components
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components/friends-service/build/libs/*.jar
+  script:
+    - gradle :components:friends-service:bootJar
+
+deploy friends:
+  stage: components
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build friends
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components/friends-service/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/friends:${CI_COMMIT_TAG}"
+
+rollout friends (dev):
+  stage: components
+  needs:
+    - deploy friends
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/network-friends --namespace vellity-develop
+
+
+# guardian
+build guardian:
+  stage: components
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components/guardian-service/build/libs/*.jar
+  script:
+    - gradle :components:guardian-service:bootJar
+
+deploy guardian:
+  stage: components
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build guardian
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components/guardian-service/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/guardian:${CI_COMMIT_TAG}"
+
+rollout guardian (dev):
+  stage: components
+  needs:
+    - deploy guardian
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/network-guardian --namespace vellity-develop
+
+# punish
+build punish:
+  stage: components
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components/punish-service/build/libs/*.jar
+  script:
+    - gradle :components:punish-service:bootJar
+
+deploy punish:
+  stage: components
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build punish
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components/punish-service/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/punish:${CI_COMMIT_TAG}"
+
+rollout punish (dev):
+  stage: components
+  needs:
+    - deploy punish
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/network-punish --namespace vellity-develop
+
+# usercache
+build usercache:
+  stage: components
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components/usercache-service/build/libs/*.jar
+  script:
+    - gradle :components:usercache-service:bootJar
+
+deploy usercache:
+  stage: components
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build usercache
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components/usercache-service/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/usercache:${CI_COMMIT_TAG}"
+
+rollout usercache (dev):
+  stage: components
+  needs:
+    - deploy usercache
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/network-usercache --namespace vellity-develop
+
+
+# worker
+build worker:
+  stage: components
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components/worker-service/build/libs/*.jar
+  script:
+    - gradle :components:worker-service:bootJar
+
+deploy worker:
+  stage: components
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build worker
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components/worker-service/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/worker:${CI_COMMIT_TAG}"
+
+rollout worker (dev):
+  stage: components
+  needs:
+    - deploy worker
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/network-worker --namespace vellity-develop
+
+# chatlog_viewer
+build chatlog_viewer:
+  stage: components-web
+  image:
+    name: 'gradle:alpine'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - components-web/chatlog-viewer-web/build/libs/*.jar
+  script:
+    - gradle :components-web:chatlog-viewer-web:bootJar
+
+deploy chatlog_viewer:
+  stage: components-web
+  artifacts:
+    expire_in: 7 days
+  needs:
+    - build chatlog_viewer
+  image:
+    name: 'gcr.io/kaniko-project/executor:v1.9.0-debug'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - main
+    - stage
+    - develop
+  script:
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/components-web/chatlog-viewer-web/Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}/chatlog-viewer-web:${CI_COMMIT_TAG}"
+
+rollout chatlog_viewer (dev):
+  stage: components-web
+  needs:
+    - deploy chatlog_viewer
+  image:
+    name: 'bitnami/kubectl:latest'
+    entrypoint: [ '' ]
+    pull_policy: if-not-present
+  only:
+    - develop
+  script:
+    - kubectl config get-contexts
+    - kubectl config use-context vellity-networks/network:vellity-network
+    - kubectl rollout restart deployment/webpages-chatlog-viewer --namespace vellity-develop

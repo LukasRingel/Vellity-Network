@@ -1,0 +1,478 @@
+{
+	"info": {
+		"_postman_id": "fc7062d0-2ab8-42db-b6b2-3d38ac931b90",
+		"name": "vellity-guardian",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28189391"
+	},
+	"item": [
+		{
+			"name": "reports",
+			"item": [
+				{
+					"name": "reason",
+					"item": [
+						{
+							"name": "get-reasons",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{guardian-host}}/reports/reasons?context=POSTMAN",
+									"host": [
+										"{{guardian-host}}"
+									],
+									"path": [
+										"reports",
+										"reasons"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create-reason",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{guardian-host}}/reports/reasons?context=POSTMAN&name=test2",
+									"host": [
+										"{{guardian-host}}"
+									],
+									"path": [
+										"reports",
+										"reasons"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "name",
+											"value": "test2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete-reason",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{guardian-host}}/reports/reasons?reason=3",
+									"host": [
+										"{{guardian-host}}"
+									],
+									"path": [
+										"reports",
+										"reasons"
+									],
+									"query": [
+										{
+											"key": "reason",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "active",
+					"item": [
+						{
+							"name": "all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{guardian-host}}/reports/active?context=POSTMAN",
+									"host": [
+										"{{guardian-host}}"
+									],
+									"path": [
+										"reports",
+										"active"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with reason",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{guardian-host}}/reports/active/reason?context=POSTMAN&reason=1",
+									"host": [
+										"{{guardian-host}}"
+									],
+									"path": [
+										"reports",
+										"active",
+										"reason"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "reason",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with status",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{guardian-host}}/reports/active/status?context=POSTMAN&status=OPEN",
+									"host": [
+										"{{guardian-host}}"
+									],
+									"path": [
+										"reports",
+										"active",
+										"status"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "status",
+											"value": "OPEN"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with target",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{guardian-host}}/reports/active/target?context=POSTMAN&target=8bc61e5e-4791-4518-88ef-16448910296f",
+									"host": [
+										"{{guardian-host}}"
+									],
+									"path": [
+										"reports",
+										"active",
+										"target"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "target",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "with creator",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{guardian-host}}/reports/active/creator?context=POSTMAN&creator=8bc61e5e-4791-4518-88ef-16448910296f",
+									"host": [
+										"{{guardian-host}}"
+									],
+									"path": [
+										"reports",
+										"active",
+										"creator"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "creator",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{guardian-host}}/reports/active?context=POSTMAN&target=8bc61e5e-4791-4518-88ef-16448910296f&creator=2fbe3e3e-50c3-482c-872b-28386fd91704&reason=1",
+									"host": [
+										"{{guardian-host}}"
+									],
+									"path": [
+										"reports",
+										"active"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "target",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										},
+										{
+											"key": "creator",
+											"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+										},
+										{
+											"key": "reason",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update-state",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{guardian-host}}/reports/active?report=1&player=8bc61e5e-4791-4518-88ef-16448910296f&status=IN_PROGRESS",
+									"host": [
+										"{{guardian-host}}"
+									],
+									"path": [
+										"reports",
+										"active"
+									],
+									"query": [
+										{
+											"key": "report",
+											"value": "1"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										},
+										{
+											"key": "status",
+											"value": "IN_PROGRESS"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "with-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{guardian-host}}/reports?id=1",
+							"host": [
+								"{{guardian-host}}"
+							],
+							"path": [
+								"reports"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chatlog",
+			"item": [
+				{
+					"name": "with-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{guardian-host}}/chatlog?id=1",
+							"host": [
+								"{{guardian-host}}"
+							],
+							"path": [
+								"chatlog"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "with-target",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{guardian-host}}/chatlog/target?context=POSTMAN&target=2fbe3e3e-50c3-482c-872b-28386fd91704",
+							"host": [
+								"{{guardian-host}}"
+							],
+							"path": [
+								"chatlog",
+								"target"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "target",
+									"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "messages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{guardian-host}}/chatlog/messages?id=1",
+							"host": [
+								"{{guardian-host}}"
+							],
+							"path": [
+								"chatlog",
+								"messages"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{guardian-host}}/chatlog?context=POSTMAN&target=8bc61e5e-4791-4518-88ef-16448910296f&creator=2fbe3e3e-50c3-482c-872b-28386fd91704",
+							"host": [
+								"{{guardian-host}}"
+							],
+							"path": [
+								"chatlog"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "target",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "creator",
+									"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{guardian-api-key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "API-KEY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

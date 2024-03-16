@@ -1,0 +1,21 @@
+version: "1.0"
+
+profile:
+  name: qodana.starter
+
+projectJDK: corretto-17
+
+linter: jetbrains/qodana-jvm:latest
+include:
+  - name: MemberVisibilityCanBePrivate
+  - name: MayBeConstant
+  - name: ConstPropertyName
+exclude:
+  - name: All
+    paths:
+      # Exclude possible sql injection caused by uncontrolled inputs as vars since we love the risk
+      - utilities/utils-mysql/src/main/kotlin/net/vellity/utils/mysql/supplied/SuppliedMySqlConnection.kt
+      # Exclude possible errors with null-types since we shut down the service if no connection is available
+      - utilities/utils-redis/src/main/kotlin/net/vellity/utils/redis/RedisConnection.kt
+      # Exclude custom http header of organisation
+      - utilities/utils-httpclient/src/main/kotlin/net/vellity/utils/httpclient/HttpClientFactory.kt

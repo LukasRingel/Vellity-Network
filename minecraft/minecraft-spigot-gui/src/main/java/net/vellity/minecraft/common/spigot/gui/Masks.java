@@ -1,0 +1,31 @@
+package net.vellity.minecraft.common.spigot.gui;
+
+public class Masks {
+  public static final String ONE_ROW_WITH_SPACER = "#########";
+  public static final String ONE_ROW_WITH_SPACER_AT_BORDER = "#-------#";
+
+  public static final String TWO_ROWS_WITH_BORDER = ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER_AT_BORDER;
+
+  public static final String THREE_ROWS_WITH_BORDER = ONE_ROW_WITH_SPACER +
+    ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER;
+
+  public static final String FOUR_ROWS_WITH_BORDER = ONE_ROW_WITH_SPACER +
+    ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER;
+
+  public static final String FIVE_ROWS_WITH_BORDER = ONE_ROW_WITH_SPACER +
+    ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER;
+
+  public static final String SIX_ROWS_WITH_BORDER = ONE_ROW_WITH_SPACER +
+    ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER_AT_BORDER +
+    ONE_ROW_WITH_SPACER;
+}

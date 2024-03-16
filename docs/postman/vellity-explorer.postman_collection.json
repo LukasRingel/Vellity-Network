@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "dc6d5f59-4f31-4f71-a9a5-6badfe26b013",
+		"name": "vellity-explorer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28189391"
+	},
+	"item": [
+		{
+			"name": "get all of type",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{explorer-host}}/registry/filter?type=test&context=POSTMAN",
+					"host": [
+						"{{explorer-host}}"
+					],
+					"path": [
+						"registry",
+						"filter"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "test"
+						},
+						{
+							"key": "context",
+							"value": "POSTMAN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{explorer-host}}/registry?context=POSTMAN",
+					"host": [
+						"{{explorer-host}}"
+					],
+					"path": [
+						"registry"
+					],
+					"query": [
+						{
+							"key": "context",
+							"value": "POSTMAN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{explorer-host}}/registry?type=test&port=8000&context=POSTMAN",
+					"host": [
+						"{{explorer-host}}"
+					],
+					"path": [
+						"registry"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "test"
+						},
+						{
+							"key": "port",
+							"value": "8000"
+						},
+						{
+							"key": "context",
+							"value": "POSTMAN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update hearthbeat",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{explorer-host}}/registry?type=test&id&context=POSTMAN",
+					"host": [
+						"{{explorer-host}}"
+					],
+					"path": [
+						"registry"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "test"
+						},
+						{
+							"key": "id",
+							"value": null
+						},
+						{
+							"key": "context",
+							"value": "POSTMAN"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{explorer-api-key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "API-KEY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

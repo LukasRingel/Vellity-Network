@@ -1,0 +1,7 @@
+main: net.vellity.minecraft.common.spigot.VellityNetworkSpigotPlugin
+
+name: vellity-spigot-commons
+version: 1.0.0
+author: lvkaas
+description: Connects Spigot to the Vellity Network and its services
+api-version: 1.13

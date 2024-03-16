@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "9fb8119b-e2eb-46b6-b2aa-c05a042ccc60",
+		"name": "vellity-config",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28189391"
+	},
+	"item": [
+		{
+			"name": "feature-flags",
+			"item": [
+				{
+					"name": "flags-in-context",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-host}}/flags?context=POSTMAN",
+							"host": [
+								"{{config-host}}"
+							],
+							"path": [
+								"flags"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flags-with-name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{config-host}}/flags/id?context=POSTMAN&name=test",
+							"host": [
+								"{{config-host}}"
+							],
+							"path": [
+								"flags",
+								"id"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "name",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-flag",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{config-host}}/flags?context=POSTMAN&name=test&enabled=true&activeUntil=",
+							"host": [
+								"{{config-host}}"
+							],
+							"path": [
+								"flags"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "name",
+									"value": "test"
+								},
+								{
+									"key": "enabled",
+									"value": "true"
+								},
+								{
+									"key": "activeUntil",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get-config",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{config-host}}/configurations?context=MCMINIGAME&path=dummy",
+					"host": [
+						"{{config-host}}"
+					],
+					"path": [
+						"configurations"
+					],
+					"query": [
+						{
+							"key": "context",
+							"value": "MCMINIGAME"
+						},
+						{
+							"key": "path",
+							"value": "dummy"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{config-api-key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "API-KEY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

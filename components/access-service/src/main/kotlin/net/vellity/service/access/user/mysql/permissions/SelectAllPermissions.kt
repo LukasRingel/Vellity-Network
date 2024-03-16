@@ -1,0 +1,29 @@
+package net.vellity.service.access.user.mysql.permissions
+
+import net.vellity.service.access.user.AssignedPermission
+import net.vellity.utils.mysql.query.SelectQuery
+import net.vellity.utils.mysql.extensions.getContext
+import net.vellity.utils.mysql.extensions.getInstant
+import net.vellity.utils.mysql.extensions.setUuid
+import java.sql.PreparedStatement
+import java.sql.ResultSet
+import java.util.*
+
+class SelectAllPermissions(private val player: UUID) : SelectQuery<AssignedPermission> {
+  override fun query(): String {
+    return "SELECT * FROM access_users_permissions where player = ? and expireAt > now();"
+  }
+
+  override fun replace(preparedStatement: PreparedStatement) {
+    preparedStatement.setUuid(1, player)
+  }
+
+  override fun mapper(resultSet: ResultSet): AssignedPermission {
+    return AssignedPermission(
+      resultSet.getInt("id"),
+      resultSet.getContext("context"),
+      resultSet.getString("permission"),
+      resultSet.getInstant("expireAt")
+    )
+  }
+}

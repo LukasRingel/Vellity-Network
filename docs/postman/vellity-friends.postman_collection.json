@@ -1,0 +1,609 @@
+{
+	"info": {
+		"_postman_id": "1a47bc9b-1d6e-4450-a95b-6c33c45bc35f",
+		"name": "vellity-friends",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28189391"
+	},
+	"item": [
+		{
+			"name": "friendships",
+			"item": [
+				{
+					"name": "blocklist",
+					"item": [
+						{
+							"name": "get-active",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/blocklist?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"blocklist"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create-block",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/blocklist?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&target=2fbe3e3e-50c3-482c-872b-28386fd91704&activeUntil=1720389600000",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"blocklist"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										},
+										{
+											"key": "target",
+											"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+										},
+										{
+											"key": "activeUntil",
+											"value": "1720389600000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete-block",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/blocklist?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&target=2fbe3e3e-50c3-482c-872b-28386fd91704",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"blocklist"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										},
+										{
+											"key": "target",
+											"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "requests",
+					"item": [
+						{
+							"name": "requests-for-player",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/requests?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"requests"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "requested-by-player",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/requested?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"requested"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "accept",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/requests/accept?context=POSTMAN&friend=8bc61e5e-4791-4518-88ef-16448910296f&player=2fbe3e3e-50c3-482c-872b-28386fd91704",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"requests",
+										"accept"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "friend",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										},
+										{
+											"key": "player",
+											"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deny",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/requests/deny?context=POSTMAN&friend=8bc61e5e-4791-4518-88ef-16448910296f&player=2fbe3e3e-50c3-482c-872b-28386fd91704",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"requests",
+										"deny"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "friend",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										},
+										{
+											"key": "player",
+											"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/requests?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&friend=2fbe3e3e-50c3-482c-872b-28386fd91704",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"requests"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										},
+										{
+											"key": "friend",
+											"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "request",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/requests?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&friend=2fbe3e3e-50c3-482c-872b-28386fd91704",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"requests"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										},
+										{
+											"key": "friend",
+											"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "friends",
+					"item": [
+						{
+							"name": "friends",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/friends?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"friends"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "friendship",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/with?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&friend=2fbe3e3e-50c3-482c-872b-28386fd91704",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"with"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										},
+										{
+											"key": "friend",
+											"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete friendship",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{friends-host}}/friendships/with?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&friend=2fbe3e3e-50c3-482c-872b-28386fd91704",
+									"host": [
+										"{{friends-host}}"
+									],
+									"path": [
+										"friendships",
+										"with"
+									],
+									"query": [
+										{
+											"key": "context",
+											"value": "POSTMAN"
+										},
+										{
+											"key": "player",
+											"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+										},
+										{
+											"key": "friend",
+											"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "update-state",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{friends-host}}/friendships/state?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&friend=2fbe3e3e-50c3-482c-872b-28386fd91704&state=FAVORITE",
+							"host": [
+								"{{friends-host}}"
+							],
+							"path": [
+								"friendships",
+								"state"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "friend",
+									"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+								},
+								{
+									"key": "state",
+									"value": "FAVORITE"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "settings",
+			"item": [
+				{
+					"name": "settings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{friends-host}}/settings?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f",
+							"host": [
+								"{{friends-host}}"
+							],
+							"path": [
+								"settings"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{friends-host}}/settings/check?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&setting=REQUESTS&target=2fbe3e3e-50c3-482c-872b-28386fd91704&knowIfFriends=true",
+							"host": [
+								"{{friends-host}}"
+							],
+							"path": [
+								"settings",
+								"check"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "setting",
+									"value": "REQUESTS"
+								},
+								{
+									"key": "target",
+									"value": "2fbe3e3e-50c3-482c-872b-28386fd91704"
+								},
+								{
+									"key": "knowIfFriends",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{friends-host}}/settings?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&setting=FRIENDS_CAN_JUMP&value=FRIENDS",
+							"host": [
+								"{{friends-host}}"
+							],
+							"path": [
+								"settings"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "setting",
+									"value": "FRIENDS_CAN_JUMP"
+								},
+								{
+									"key": "value",
+									"value": "FRIENDS"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{friends-host}}/profile?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f",
+					"host": [
+						"{{friends-host}}"
+					],
+					"path": [
+						"profile"
+					],
+					"query": [
+						{
+							"key": "context",
+							"value": "POSTMAN"
+						},
+						{
+							"key": "player",
+							"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{friends-api-key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "API-KEY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

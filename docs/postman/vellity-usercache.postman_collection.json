@@ -1,0 +1,862 @@
+{
+	"info": {
+		"_postman_id": "3e0c509f-7fa4-4a4b-9185-d9dc0ece10ef",
+		"name": "vellity-usercache",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28189391"
+	},
+	"item": [
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/logins?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&limit=50",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"logins"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register-login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/logins?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&address=localhost",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"logins"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "address",
+									"value": "localhost"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register-logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/logins?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&address=localhost",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"logins"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "address",
+									"value": "localhost"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "message",
+			"item": [
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/messages?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&message=testlol&status=SUCCESS",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"messages"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "message",
+									"value": "testlol"
+								},
+								{
+									"key": "status",
+									"value": "SUCCESS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "with-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/messages?id=1",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"messages"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "last",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/messages/last?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&limit=50",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"messages",
+								"last"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bulk",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/messages/last?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&limit=50",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"messages",
+								"last"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "between",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/messages/between?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&startDate=&endDate=",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"messages",
+								"between"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "startDate",
+									"value": ""
+								},
+								{
+									"key": "endDate",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "name",
+			"item": [
+				{
+					"name": "current",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/names/current?player=8bc61e5e-4791-4518-88ef-16448910296f",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"names",
+								"current"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "current by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/names/current?player=8bc61e5e-4791-4518-88ef-16448910296f",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"names",
+								"current"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/names/history?player=8bc61e5e-4791-4518-88ef-16448910296f",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"names",
+								"history"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bulk",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    \"8bc61e5e-4791-4518-88ef-16448910296f\",\r\n    \"2fbe3e3e-50c3-482c-872b-28386fd91704\"\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{usercache-host}}/names/current/bulk",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"names",
+								"current",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check-for-update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/names/check?player=8bc61e5e-4791-4518-88ef-16448910296f&name=lvkaas",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"names",
+								"check"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "name",
+									"value": "lvkaas"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "texture",
+			"item": [
+				{
+					"name": "current",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/textures/current?player=8bc61e5e-4791-4518-88ef-16448910296f",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"textures",
+								"current"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/textures/history?player=8bc61e5e-4791-4518-88ef-16448910296f",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"textures",
+								"history"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bulk",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    \"8bc61e5e-4791-4518-88ef-16448910296f\",\r\n    \"2fbe3e3e-50c3-482c-872b-28386fd91704\"\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{usercache-host}}/textures/current/bulk",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"textures",
+								"current",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check-for-update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/textures/check?player=8bc61e5e-4791-4518-88ef-16448910296f&signature=testsig&texture=testvalue",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"textures",
+								"check"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "signature",
+									"value": "testsig"
+								},
+								{
+									"key": "texture",
+									"value": "testvalue"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "session",
+			"item": [
+				{
+					"name": "current-session",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/sessions?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"sessions"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "current-sessions-context",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/sessions/context?context=POSTMAN",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"sessions",
+								"context"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-server",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/sessions/server?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&server=test",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"sessions",
+								"server"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "server",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-proxy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/sessions/proxy?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&proxy=test",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"sessions",
+								"proxy"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "proxy",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "keep-alive",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/sessions/keepalive?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&proxy=test",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"sessions",
+								"keepalive"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "proxy",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "combinded",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/combined/login?context=POSTMAN&player=8bc61e5e-4791-4518-88ef-16448910296f&name=lvkaas&proxyServer=postman-request&ip=127.0.0.1&textureSignature=signature&textureValue=value",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"combined",
+								"login"
+							],
+							"query": [
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "name",
+									"value": "lvkaas"
+								},
+								{
+									"key": "proxyServer",
+									"value": "postman-request"
+								},
+								{
+									"key": "ip",
+									"value": "127.0.0.1"
+								},
+								{
+									"key": "textureSignature",
+									"value": "signature"
+								},
+								{
+									"key": "textureValue",
+									"value": "value"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notifications",
+			"item": [
+				{
+					"name": "get notification",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/notifications?player=8bc61e5e-4791-4518-88ef-16448910296f&context=POSTMAN&notification=PUNISHMENT_BAN_NETWORK",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "notification",
+									"value": "PUNISHMENT_BAN_NETWORK"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all notifications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/notifications/all?player=8bc61e5e-4791-4518-88ef-16448910296f&context=POSTMAN",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"notifications",
+								"all"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update notification",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{usercache-host}}/notifications?player=8bc61e5e-4791-4518-88ef-16448910296f&context=POSTMAN&notification=PUNISHMENT_BAN_NETWORK&enabled=false",
+							"host": [
+								"{{usercache-host}}"
+							],
+							"path": [
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "player",
+									"value": "8bc61e5e-4791-4518-88ef-16448910296f"
+								},
+								{
+									"key": "context",
+									"value": "POSTMAN"
+								},
+								{
+									"key": "notification",
+									"value": "PUNISHMENT_BAN_NETWORK"
+								},
+								{
+									"key": "enabled",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{usercache-api-key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "API-KEY",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

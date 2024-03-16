@@ -1,0 +1,17 @@
+package net.vellity.service.access
+
+enum class MetaData {
+
+  DISPLAY_NAME,
+  PREFIX_TAB_LIST,
+  PREFIX_CHAT,
+  PREFIX_NAME_TAG,
+  COLOR_TAB_LIST,
+  COLOR_CHAT,
+  COLOR_NAME_TAG,
+  SUFFIX_TAB_LIST,
+  SUFFIX_CHAT,
+  SUFFIX_NAME_TAG,
+  TAB_LIST_PRIORITY
+
+}
